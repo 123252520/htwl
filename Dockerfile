@@ -9,7 +9,7 @@ RUN mvn clean package
 # Second stage: minimal runtime environment
 FROM openjdk:8-jre-alpine
 # copy jar from the first stage
-COPY --from=builder target/htwlgs-cloud-registry.jarhtwlgs-cloud-registry.jar
+COPY --from=builder target/htwlgs-cloud-registry.jar htwlgs-cloud-registry.jar
 
 EXPOSE 8761
 # run jar
