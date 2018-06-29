@@ -7,8 +7,10 @@ ADD ./src src/
 RUN mvn clean package
 
 # Second stage: minimal runtime environment
-From openjdk:8-jre-alpine
+FROM openjdk:8-jre-alpine
 # copy jar from the first stage
 COPY --from=builder target/htwlgs-cloud-registry.jarhtwlgs-cloud-registry.jar
+
+EXPOSE 8761
 # run jar
 CMD ["java", "-jar", "htwlgs-cloud-registry.jar"]
